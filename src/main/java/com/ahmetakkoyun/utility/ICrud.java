@@ -1,4 +1,4 @@
-package com.ahmetakkoyun.repository;
+package com.ahmetakkoyun.utility;
 
 import java.util.List;
 import java.util.Optional;

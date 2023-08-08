@@ -1,7 +1,7 @@
 package com.ahmetakkoyun.repository;
 
 import com.ahmetakkoyun.utility.ICrud;
-import com.ahmetakkoyun.repository.entity.Address;
+import com.ahmetakkoyun.repository.entity.Borrow;
 import com.ahmetakkoyun.utility.HibernateUtility;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -9,18 +9,18 @@ import org.hibernate.Transaction;
 import java.util.List;
 import java.util.Optional;
 
-public class AddressRepository implements ICrud<Address> {
+public class BorrowRepository implements ICrud<Borrow> {
 
     Session session;
     Transaction transaction;
 
     @Override
-    public Address save(Address address) {
+    public Borrow save(Borrow borrow) {
         try {
             session = HibernateUtility.getSESSION_FACTORY().openSession();
             System.out.println("Oturum açıldı...");
             transaction = session.beginTransaction();
-            session.save(address);
+            session.save(borrow);
             transaction.commit();
             System.out.println("Kayyıt başarılı...");
         }catch (Exception e){
@@ -31,13 +31,13 @@ public class AddressRepository implements ICrud<Address> {
             System.out.println("Oturum kapandı...");
             session.close();
         }
-        return address;
+        return borrow;
     }
 
 
 
     @Override
-    public Address update(Address address) {
+    public Borrow update(Borrow borrow) {
         return null;
     }
 
@@ -47,12 +47,12 @@ public class AddressRepository implements ICrud<Address> {
     }
 
     @Override
-    public List<Address> findAll() {
+    public List<Borrow> findAll() {
         return null;
     }
 
     @Override
-    public Optional<Address> findById(Long id) {
+    public Optional<Borrow> findById(Long id) {
         return Optional.empty();
     }
 }

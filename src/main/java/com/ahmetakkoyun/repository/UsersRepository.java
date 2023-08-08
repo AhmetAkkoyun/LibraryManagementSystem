@@ -1,5 +1,6 @@
 package com.ahmetakkoyun.repository;
 
+import com.ahmetakkoyun.utility.ICrud;
 import com.ahmetakkoyun.repository.entity.Users;
 import com.ahmetakkoyun.utility.HibernateUtility;
 import org.hibernate.Session;
