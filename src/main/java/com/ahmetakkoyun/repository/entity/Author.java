@@ -22,7 +22,13 @@ public class Author {
     private String lastName;
 
     // kitapları
-    @OneToMany
+    @OneToMany(mappedBy = "author")  // ara tablo oluşturmadan iki tabloyu maplemek için.
+
+            // ara tablo özelliklerini vermek için kullanıyoruz.
+//    @JoinTable(name = "yazar_kitap",
+//    joinColumns = @JoinColumn(name = "kitap_id"),
+//    inverseJoinColumns = @JoinColumn(name = "yazar_id")
+//    )
     List<Book> books;
 
 

@@ -12,22 +12,22 @@ public class MainWithCascade {
 
         UsersRepository userRepository = new UsersRepository();
 
-        Users user = Users.builder()
-                .username("Ahmet")
-                .password("123")
-                .userInformation(UserInformation.builder()
-                        .firstName("Ahmet")
-                        .lastName("Akkoyun")
-                        .address(Address.builder()
-                                .city("Ankara")
-                                .country("Türkiye")
-                                .build()
-                        )
-                        .build()
-                )
-                .build();
-
-        userRepository.save(user);
+//        Users user = Users.builder()
+//                .username("Ahmet")
+//                .password("123")
+//                .userInformation(UserInformation.builder()
+//                        .firstName("Ahmet")
+//                        .lastName("Akkoyun")
+//                        .address(Address.builder()
+//                                .city("Ankara")
+//                                .country("Türkiye")
+//                                .build()
+//                        )
+//                        .build()
+//                )
+//                .build();
+//
+//        userRepository.save(user);
 
 
     }

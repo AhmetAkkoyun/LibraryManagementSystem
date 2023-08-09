@@ -1,13 +1,13 @@
 package com.ahmetakkoyun.repository.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
+import lombok.*;
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -19,6 +19,10 @@ public class Address {
     private Long id;
     private String country;
     private String city;
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "address")
+    @Builder.Default
+    @ToString.Exclude
+    private Set<UserInformation> userInformations = new HashSet<>();
 
 
 }

@@ -31,7 +31,8 @@ public class Book {
 
     private int pageCount;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
     private Author author;
 
 }

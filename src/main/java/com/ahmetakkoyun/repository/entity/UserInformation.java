@@ -1,13 +1,13 @@
 package com.ahmetakkoyun.repository.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.Set;
 
-@Data
+@Getter
+@Setter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -26,9 +26,8 @@ public class UserInformation {
 
     private String about;
 
-    @OneToOne(cascade = CascadeType.ALL)  //adres olmadan info oluşturabilmek için. (id yok hatası vermeyecek id atayacak)
-    @JoinColumn(unique = true)
-    private Address address;
+    @ManyToMany(cascade = CascadeType.ALL)  //cascade adres olmadan info oluşturabilmek için. (id yok hatası vermeyecek id atayacak)
+    private Set<Address> address;
 
 
 

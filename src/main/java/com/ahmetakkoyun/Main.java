@@ -24,7 +24,6 @@ public class Main {
         UserInformation userInformation = UserInformation.builder()
                 .firstName("Ahmet")
                 .lastName("Akkoyun")
-                .address(address)
                 .build();
         userInformationRepository.save(userInformation);
 
@@ -36,12 +35,11 @@ public class Main {
 
         userRepository.save(user);
 
-//        Users user2 = Users.builder()
-//                .password("456")
-//                .username("ahmet")
-//                .userInformation(userInformation)
-//                .build();
-//        userRepository.save(user2);
+        Users user2 = Users.builder()
+                .password("456")
+                .username("ahmet")
+                .build();
+        userRepository.save(user2);
 
     }
 
