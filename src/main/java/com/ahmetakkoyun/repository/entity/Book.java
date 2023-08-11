@@ -2,10 +2,7 @@ package com.ahmetakkoyun.repository.entity;
 
 import com.ahmetakkoyun.repository.enums.EBookType;
 import com.ahmetakkoyun.repository.enums.EStatus;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -14,6 +11,12 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Entity
+@NamedQueries(
+        {
+         @NamedQuery(name="findByBookType", query = "SELECT b FROM Book AS b WHERE b.bookType=:x"),
+         @NamedQuery(name = "findById", query = "SELECT b FROM Book AS b WHERE b.id=:x")
+        }
+)
 public class Book {
 
     @Id
@@ -27,12 +30,13 @@ public class Book {
 
     @Enumerated(EnumType.STRING)
     @Builder.Default                      // başlangıç değeri available
-    private EStatus eStatus = EStatus.AVAILABLE;
+    private EStatus status = EStatus.AVAILABLE;
 
     private int pageCount;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id", referencedColumnName = "id", nullable = false)
+    @ToString.Exclude
     private Author author;
 
 }

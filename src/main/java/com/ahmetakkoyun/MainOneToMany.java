@@ -5,7 +5,10 @@ import com.ahmetakkoyun.controller.BookController;
 import com.ahmetakkoyun.repository.entity.Author;
 import com.ahmetakkoyun.repository.entity.Book;
 import com.ahmetakkoyun.repository.enums.EBookType;
+import com.ahmetakkoyun.utility.HibernateUtility;
+import org.hibernate.Session;
 
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class MainOneToMany {
@@ -49,6 +52,15 @@ public class MainOneToMany {
         bookController.save(book1);
         bookController.save(book2);
         bookController.save(book3);
+
+        Session session = HibernateUtility.getSESSION_FACTORY().openSession();
+        String hql = "SELECT a FROM Author AS a WHERE a.id=1";
+        TypedQuery<Author> typedQuery = session.createQuery(hql, Author.class);
+        Author newAuthor = typedQuery.getSingleResult();
+//        session.close();    // season.close burda olsaydı lazy olan değerleri okuyamayacaktı.
+        System.out.println(newAuthor.getFirstName());
+        System.out.println(newAuthor.getBooks());
+        session.close();
 
 
 

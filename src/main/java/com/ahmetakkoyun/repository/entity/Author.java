@@ -22,7 +22,8 @@ public class Author {
     private String lastName;
 
     // kitapları
-    @OneToMany(mappedBy = "author")  // ara tablo oluşturmadan iki tabloyu maplemek için.
+    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)  // ara tablo oluşturmadan iki tabloyu maplemek için.
+                                                             // fetchtype lazy tasarruf için. sadece season içinde kayıt tutulur. season.close sonrası kayıt tutulmaz.
 
             // ara tablo özelliklerini vermek için kullanıyoruz.
 //    @JoinTable(name = "yazar_kitap",

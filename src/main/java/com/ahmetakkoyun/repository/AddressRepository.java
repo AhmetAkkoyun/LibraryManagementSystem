@@ -22,7 +22,7 @@ public class AddressRepository implements ICrud<Address> {
             transaction = session.beginTransaction();
             session.save(address);
             transaction.commit();
-            System.out.println("Kayyıt başarılı...");
+            System.out.println("Kayıt başarılı...");
         }catch (Exception e){
             e.printStackTrace();
             transaction.rollback();

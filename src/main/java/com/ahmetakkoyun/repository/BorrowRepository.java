@@ -22,7 +22,7 @@ public class BorrowRepository implements ICrud<Borrow> {
             transaction = session.beginTransaction();
             session.save(borrow);
             transaction.commit();
-            System.out.println("Kayyıt başarılı...");
+            System.out.println("Kayıt başarılı...");
         }catch (Exception e){
             e.printStackTrace();
             transaction.rollback();

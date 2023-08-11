@@ -1,6 +1,7 @@
 package com.ahmetakkoyun.service;
 
 import com.ahmetakkoyun.repository.AuthorRepository;
+import com.ahmetakkoyun.repository.entity.Book;
 import com.ahmetakkoyun.utility.ICrud;
 import com.ahmetakkoyun.repository.entity.Author;
 
@@ -39,5 +40,9 @@ public class AuthorService implements ICrud<Author> {
     @Override
     public Optional<Author> findById(Long id) {
         return authorRepository.findById(id);
+    }
+
+    public List<Book> getBooksWithAuthorNamesStartWith(String character){
+        return authorRepository.getBooksWithAuthorNamesStartWith(character);
     }
 }

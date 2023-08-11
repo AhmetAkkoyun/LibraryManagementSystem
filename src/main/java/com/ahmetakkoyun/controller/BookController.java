@@ -1,5 +1,6 @@
 package com.ahmetakkoyun.controller;
 
+import com.ahmetakkoyun.repository.enums.EBookType;
 import com.ahmetakkoyun.utility.ICrud;
 import com.ahmetakkoyun.repository.entity.Book;
 import com.ahmetakkoyun.service.BookService;
@@ -39,5 +40,9 @@ public class BookController implements ICrud<Book> {
     @Override
     public Optional<Book> findById(Long id) {
         return bookService.findById(id);
+    }
+
+    public List<Book> getBooksByType(EBookType eBookType){
+        return bookService.getBooksByType(eBookType);
     }
 }

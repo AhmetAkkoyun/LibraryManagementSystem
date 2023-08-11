@@ -5,11 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
+import javax.persistence.*;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -22,7 +19,19 @@ public class Borrow {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    private Users users;
 
+    @ManyToOne
+    private Book book;
+
+    @Builder.Default
+    private LocalDate borrowDate = LocalDate.now();
+
+    @Transient
+    private int period;
+
+    private LocalDate returnDate;
 
 
 }
