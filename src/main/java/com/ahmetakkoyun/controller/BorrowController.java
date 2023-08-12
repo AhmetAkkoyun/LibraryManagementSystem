@@ -1,5 +1,6 @@
 package com.ahmetakkoyun.controller;
 
+import com.ahmetakkoyun.repository.entity.Users;
 import com.ahmetakkoyun.utility.ICrud;
 import com.ahmetakkoyun.repository.entity.Borrow;
 import com.ahmetakkoyun.service.BorrowService;
@@ -40,6 +41,14 @@ public class BorrowController implements ICrud<Borrow> {
     @Override
     public Optional<Borrow> findById(Long id) {
         return borrowService.findById(id);
+    }
+
+    public List<Borrow> findByUserId(Long userId) {
+        return borrowService.findByUserId(userId);
+    }
+
+    public List<Users> findBorrowedUsersByBookId(Long bookId){
+        return borrowService.findBorrowedUsersByBookId(bookId);
     }
 
 

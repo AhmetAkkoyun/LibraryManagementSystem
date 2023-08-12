@@ -1,6 +1,9 @@
 package com.ahmetakkoyun.controller;
 
+import com.ahmetakkoyun.repository.entity.Borrow;
+import com.ahmetakkoyun.repository.entity.Users;
 import com.ahmetakkoyun.repository.enums.EBookType;
+import com.ahmetakkoyun.repository.enums.EStatus;
 import com.ahmetakkoyun.utility.ICrud;
 import com.ahmetakkoyun.repository.entity.Book;
 import com.ahmetakkoyun.service.BookService;
@@ -45,4 +48,37 @@ public class BookController implements ICrud<Book> {
     public List<Book> getBooksByType(EBookType eBookType){
         return bookService.getBooksByType(eBookType);
     }
+
+    public Optional<Book>findByTitle(String title){
+        return bookService.findByTitle(title);
+    }
+
+    public List<Book>findByTitle2(String title){
+        return bookService.findByTitle2(title);
+    }
+
+    public List<Book> findByTitleWithCriteria(String title){
+        return bookService.findByTitleWithCriteria(title);
+    }
+
+    public List<Object[]> findByTitleWithCriteria2(String title){
+        return bookService.findByTitleWithCriteria2(title);
+    }
+
+    public List<Object[]> getBookCountByType(){
+        return bookService.getBookCountByType();
+    }
+
+    public List<Object[]> getBookCountByTypeWithCriteria(){
+        return bookService.getBookCountByTypeWithCriteria();
+    }
+
+    public List<Object[]> getBookCountByTypeWithNamedQuery(){
+        return bookService.getBookCountByTypeWithNamedQuery();
+    }
+
+    public List<Book> getBooksByStatus(EStatus eStatus){
+        return bookService.getBooksByStatus(eStatus);
+    }
+
 }

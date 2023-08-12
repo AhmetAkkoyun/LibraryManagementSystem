@@ -52,6 +52,7 @@ public class UserInformationRepository implements ICrud<UserInformation> {
         session=HibernateUtility.getSESSION_FACTORY().openSession();
         TypedQuery<UserInformation> typedQuery = session.createQuery(hql, UserInformation.class);
         List<UserInformation> userInformations = typedQuery.getResultList();
+        session.close();
         return userInformations;
     }
 
@@ -61,6 +62,7 @@ public class UserInformationRepository implements ICrud<UserInformation> {
         session=HibernateUtility.getSESSION_FACTORY().openSession();
         TypedQuery<UserInformation> typedQuery = session.createQuery(hql, UserInformation.class);
         List<UserInformation> userInformations = typedQuery.getResultList();
+        session.close();
         return Optional.empty();
     }
 }

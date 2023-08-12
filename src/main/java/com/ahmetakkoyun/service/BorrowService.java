@@ -1,6 +1,7 @@
 package com.ahmetakkoyun.service;
 
 import com.ahmetakkoyun.repository.BorrowRepository;
+import com.ahmetakkoyun.repository.entity.Users;
 import com.ahmetakkoyun.utility.ICrud;
 import com.ahmetakkoyun.repository.entity.Borrow;
 
@@ -22,6 +23,7 @@ public class BorrowService implements ICrud<Borrow> {
 
     @Override
     public Borrow update(Borrow borrow) {
+        saveReturnDate(borrow);
         return borrowRepository.update(borrow);
     }
 
@@ -43,5 +45,13 @@ public class BorrowService implements ICrud<Borrow> {
 
     public void saveReturnDate(Borrow borrow) {
         borrow.setReturnDate(borrow.getBorrowDate().plusDays(borrow.getPeriod()));
+    }
+
+    public List<Borrow> findByUserId(Long userId) {
+        return borrowRepository.findByUserId(userId);
+    }
+
+    public List<Users> findBorrowedUsersByBookId(Long bookId){
+        return borrowRepository.findBorrowedUsersByBookId(bookId);
     }
 }

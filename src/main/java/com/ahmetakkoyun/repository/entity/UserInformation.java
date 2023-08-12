@@ -26,7 +26,8 @@ public class UserInformation {
 
     private String about;
 
-    @ManyToMany(cascade = CascadeType.ALL)  //cascade adres olmadan info oluşturabilmek için. (id yok hatası vermeyecek id atayacak)
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)  //cascade adres olmadan info oluşturabilmek için. (id yok hatası vermeyecek id atayacak)
+    @ToString.Exclude
     private Set<Address> address;
 
 

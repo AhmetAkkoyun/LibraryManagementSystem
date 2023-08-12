@@ -65,7 +65,9 @@ public class AuthorRepository implements ICrud<Author> {
         session = HibernateUtility.getSESSION_FACTORY().openSession();
         TypedQuery<Book> typedQuery = session.createQuery(hql, Book.class);
         typedQuery.setParameter("x",character+"%");
-        return typedQuery.getResultList();
+        List<Book> list = typedQuery.getResultList();
+        session.close();
+        return list;
     }
 
 }

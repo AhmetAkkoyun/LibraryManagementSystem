@@ -1,11 +1,13 @@
 package com.ahmetakkoyun.repository;
 
+import com.ahmetakkoyun.repository.entity.UserInformation;
 import com.ahmetakkoyun.utility.ICrud;
 import com.ahmetakkoyun.repository.entity.Users;
 import com.ahmetakkoyun.utility.HibernateUtility;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import javax.persistence.TypedQuery;
 import java.util.List;
 import java.util.Optional;
 
@@ -49,7 +51,12 @@ public class UsersRepository implements ICrud<Users> {
 
     @Override
     public List<Users> findAll() {
-        return null;
+        String hql = "SELECT u FROM Users AS u";
+        session=HibernateUtility.getSESSION_FACTORY().openSession();
+        TypedQuery<Users> typedQuery = session.createQuery(hql, Users.class);
+        List<Users> users = typedQuery.getResultList();
+        session.close();
+        return users;
     }
 
     @Override

@@ -1,9 +1,6 @@
 package com.ahmetakkoyun.repository.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
@@ -30,6 +27,7 @@ public class Author {
 //    joinColumns = @JoinColumn(name = "kitap_id"),
 //    inverseJoinColumns = @JoinColumn(name = "yazar_id")
 //    )
+            @ToString.Exclude
     List<Book> books;
 
 
